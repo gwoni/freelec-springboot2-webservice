@@ -2,6 +2,7 @@ package com.jojoldu.book.springboot;
 //패키지 가져오 mac 단축키 option + enter
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
  * Application class 는 메인 클래스 역할
@@ -13,7 +14,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 스프링 부트는 내장 WSA를 사용 권장
  * 언제나 같은 환경에서 스프링 부트를 배포할수 있기 때문
  * 성능 이슈는 톰캣과 동일한 코드를 사용하는 서블릿으로 이루어진 자바 애플리케이션의로 성능상 이슈는 고려 안해도 됨
+ *
+ * 현재 프로젝트의 H2를 관리 할수 있는 관리 페이지 이동 (jdbc:h2:mem:testdb)
+ * http://localhost:8080/h2-console
+ *
  */
+@EnableJpaAuditing
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
