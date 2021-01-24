@@ -55,7 +55,6 @@ public class PostsService {
 
         return new PostsResponseDto(entity);
     }
-
     /**
      * readOnly = true : 트랜재션 범위는 유지하되, 조회기능만 남겨두어 조회 속도가 개선, 등록,수정,삭제 기능이 없는 서비스 메소드에서 사용 추천
      * @return
@@ -63,5 +62,20 @@ public class PostsService {
     @Transactional(readOnly = true)
     public List<PostsListResponseDto> findAllDesc() {
         return postsRepository.findAllDesc().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
+    }
+
+    /**
+     * JpaRepository 에서 이미 delete메소드를 지원하고 있으니 활용
+     * 엔티티를 파라미터로 삭제할 수 도 있고, deleteById 메소드를 이용하면 id로 삭제할 수도 있습니다.
+     * 존재하는 Posts인지 확인 을 위해 엔티티 조회 후 그대로 삭제합니다.
+     *
+     * @param id
+     */
+    @Transactional
+    public void delete (Long id) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+
+        postsRepository.delete(posts);
     }
 }
