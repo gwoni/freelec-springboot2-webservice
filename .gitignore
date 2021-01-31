@@ -2,3 +2,6 @@
 /.gradle/
 .idea
 /build/
+
+#oauth 보안용
+/src/main/resources/application-oauth.properties
