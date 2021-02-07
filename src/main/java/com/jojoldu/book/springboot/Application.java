@@ -18,8 +18,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
  * 현재 프로젝트의 H2를 관리 할수 있는 관리 페이지 이동 (jdbc:h2:mem:testdb)
  * http://localhost:8080/h2-console
  *
+ * @EnableJpaAuditing를 사용하기 위해 최소 하나의 @Entity클래스가 필요
+ * @WebMvcTest 에서는 Entyty클래스가 없으므로 JpaConfig 로 분리
  */
-@EnableJpaAuditing
+//@EnableJpaAuditing //
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
