@@ -4,5 +4,5 @@ version: 0.0
 os: linux
 files:
   - source:  / #CodeDeploy에서 전달해 준 파일 중 destination으로 이동  시킬 대상을 지정합니다., /지정 시 전체 파일을 이야기합니다.
-    destination: /home/ec2-user/app/step2/zip/ #source에서 지정된 파일을 받을 위치입니다. 이후 Jar 를 싱행하는 등 destination 에 옮긴 파일들로 진
+    destination: /home/ec2-user/app/step2/zip/ #source에서 지정된 파일을 받을 위치입니다. 이후 Jar 를 싱행하는 등 destination 에 옮긴 파일들로 진행됩니다.
     overwrite: yes #기존 파일들이 있으면 덮어쓸지를 결정합니다.
