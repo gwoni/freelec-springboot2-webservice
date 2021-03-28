@@ -18,10 +18,12 @@ fi
 
 echo "> 구동할 Docker 이미는 $IDLE_BLUEGREAN 입니다."
 
-EXISTS_BLUE=$(sudo docker ps | grep -w ${IDLE_BLUEGREAN})
-echo "> 동작중인 Docker는 $EXISTS_BLUE 입니다."
-
-if [ -z "$EXISTS_BLUE" ]; then
+EXISTS_PS=$(sudo docker ps | grep -w ${IDLE_BLUEGREAN})
+UP_COUNT=$(echo ${EXISTS_PS} | grep ${IDLE_BLUEGREAN} | wc -l)
+echo "> 동작중인 Docker PS는 $EXISTS_PS 입니다."
+echo "> up_count 확인: $UP_COUNT "
+if [ ${UP_COUNT} -ge 1 ]
+then
         sudo docker stop $IDLE_BLUEGREAN
         sudo docker rm $IDLE_BLUEGREAN
         sudo docker rmi $IDLE_BLUEGREAN
