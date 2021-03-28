@@ -16,7 +16,10 @@ else
   IDLE_BLUEGREAN=grean
 fi
 
+echo "> 구동할 Docker 이미는 $IDLE_BLUEGREAN 입니다."
+
 EXISTS_BLUE=$(sudo docker ps | grep -w ${IDLE_BLUEGREAN})
+echo "> 동작중인 Docker는 $EXISTS_BLUE 입니다."
 
 if [ -z "$EXISTS_BLUE" ]; then
         sudo docker stop $IDLE_BLUEGREAN
