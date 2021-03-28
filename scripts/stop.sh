@@ -16,12 +16,12 @@ else
   IDLE_BLUEGREAN=grean
 fi
 
-EXISTS_BLUE=$(docker ps | grep -w ${IDLE_BLUEGREAN})
+EXISTS_BLUE=$(sudo docker ps | grep -w ${IDLE_BLUEGREAN})
 
 if [ -z "$EXISTS_BLUE" ]; then
-        docker stop $IDLE_BLUEGREAN
-        docker rm $IDLE_BLUEGREAN
-        docker rmi $IDLE_BLUEGREAN
+        sudo docker stop $IDLE_BLUEGREAN
+        sudo docker rm $IDLE_BLUEGREAN
+        sudo docker rmi $IDLE_BLUEGREAN
         sleep 5
 else
         echo "> 현재 구동중인 Docker가 없으므로 종료하지 않습니다."
