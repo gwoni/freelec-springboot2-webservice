@@ -29,6 +29,8 @@ then
         sudo docker rmi $IDLE_BLUEGREAN
         sleep 5
 else
+        sudo docker rm $IDLE_BLUEGREAN
+        sudo docker rmi $IDLE_BLUEGREAN
         echo "> 현재 구동중인 Docker가 없으므로 종료하지 않습니다."
 fi
 
